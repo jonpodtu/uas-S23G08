@@ -77,6 +77,6 @@ for i = 2:length(route)
           'color',[0,0,0],'linewidth',5)
     hold on
     pause(0.1)
-    route(i,:)
+    route(i,:);
 end
 hold off
