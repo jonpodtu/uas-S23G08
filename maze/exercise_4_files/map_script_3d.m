@@ -80,8 +80,6 @@ for i = 2:length(route)
     route(i,:);
 end
 hold off
-=======
-hold off
 
 %% Scale the route
 x_scale = 0.6;
