@@ -35,8 +35,7 @@ map(end_(1), end_(2), end_(3)) = 0;
 
 
 %% Run the algorithm to optain the route
-route = greedy_3d(map, start, end_);
-
+route = astar_3d(map, start, end_);
 
 %% Draw the map
 % Draw a figure to show the map and process
@@ -78,8 +77,10 @@ for i = 2:length(route)
           'color',[0,0,0],'linewidth',5)
     hold on
     pause(0.1)
-    route(i,:)
+    route(i,:);
 end
+hold off
+=======
 hold off
 
 %% Scale the route
@@ -101,4 +102,3 @@ route_scaled(:,3) = (route_scaled(:,3) - 1) * z_scale + z_offset;
 
 % Print the scaled route
 route_scaled
-
