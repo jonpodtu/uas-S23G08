@@ -80,3 +80,25 @@ for i = 2:length(route)
     route(i,:);
 end
 hold off
+=======
+hold off
+
+%% Scale the route
+x_scale = 0.6;
+y_scale = 0.52;
+z_scale = 0.73;
+
+x_offset = 0.3;
+y_offset = 0.5;
+z_offset = 0.25;
+
+% Make a copy of the route
+route_scaled = route;
+
+% Scale the copy
+route_scaled(:,1) = (route_scaled(:,1) - 1) * x_scale + x_offset;
+route_scaled(:,2) = (route_scaled(:,2) - 1) * y_scale + y_offset;
+route_scaled(:,3) = (route_scaled(:,3) - 1) * z_scale + z_offset;
+
+% Print the scaled route
+route_scaled
