@@ -1,4 +1,4 @@
-function poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots)
+function poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots, map, route)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % MIT License
@@ -65,6 +65,6 @@ tic, poly_traj.solve; toc
 
 % PLOTS
 if make_plots
-    poly_traj.showPath(3)
-    poly_traj.showTraj(3)
+    poly_traj.showPath(3);
+    poly_traj.showTraj(3);
 end
