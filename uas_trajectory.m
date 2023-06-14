@@ -30,14 +30,20 @@
 clc
 
 % Trajectory generation
-
-knots = [0 12];
+knots = [0 15];
 waypoints = cell(1,2);
-waypoints{1} = [1.5 ; 1.5 ; 1.5];
-waypoints{2} = [4.5 ; 5.5 ; 1.5];
+waypoints{1} = [1 ; 1 ; 1];
+waypoints{2} = [4 ; 5 ; 1];
+
+%waypoints{1} = [1 ; 1 ; 1];
+%waypoints{2} = [5 ; 6 ; 1];
+
 % Fix this...
+box_size = 0.25;
 run("traj_corridors.m")
-order = 7;
+save('corridors.mat','-struct','corridors_scaled') % <- note -struct option
+%corridors_loaded = load('corridors.mat')
+order = 12;
 %corridors.times = [1 2 3 4 5];
 %corridors.x_lower = [-1 3 8.75 8.5 8];
 %corridors.x_upper = [1 7 10.75 9.5 10];
@@ -48,4 +54,5 @@ order = 7;
 % ...until here
 make_plots = true;
 
-poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots);
+poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots, map, route);
+poly_traj.polyCoeffSet

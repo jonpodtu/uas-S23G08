@@ -32,6 +32,23 @@ clc
 
 %% SIMULATION PARAMETERS
 run("maze/exercise_4_files/map_script_3d.m");
+%run("maze/maze_1.m");
+%s = size(map)
+%start_pos = [0 0];
+%end_pos = [4 5];
+%route = flip(greedy_2d(flip(map), start_pos+1, flip(end_pos+1)), 2);
+%
+%hold on
+%plot_map(map, 1)
+%plot_route(route, 1)
+
+% Convert to 3d:
+%map_ones = ones(s(1), s(2), 2);
+%map_ones(:,:,1) = map;
+%map = map_ones;
+%
+%route=[route ones(length(route), 1)];
+
 
 wall_color = [0.8 0.2 0.2];
 sample_time = 4e-2;
