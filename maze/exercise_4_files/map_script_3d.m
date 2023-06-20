@@ -6,7 +6,7 @@ clc
 % wall file is an obstacle. The position of the obstacle is defined in the
 % wall file by its x y z coordinates. The three last elements is
 % the size of the maze, the starting position and goal position
-load('wall.txt')
+load('wall.txt');
 % If a different named file is used, then write it into the wall variable
 % e.g. wall = maze_2;
 wall = wall;
@@ -74,10 +74,9 @@ for i = 2:length(route)
     plot3([route(i-1,1)+0.5,route(i,1)+0.5], ...
           [route(i-1,2)+0.5,route(i,2)+0.5], ...
           [route(i-1,3)+0.5,route(i,3)+0.5], ...
-          'color',[0,0,0],'linewidth',5)
+          'color',[0,0,0],'linewidth',5);
     hold on
     pause(0.1)
-    route(i,:);
 end
 hold off
 
@@ -97,6 +96,3 @@ route_scaled = route;
 route_scaled(:,1) = (route_scaled(:,1) - 1) * x_scale + x_offset;
 route_scaled(:,2) = (route_scaled(:,2) - 1) * y_scale + y_offset;
 route_scaled(:,3) = (route_scaled(:,3) - 1) * z_scale + z_offset;
-
-% Print the scaled route
-route_scaled

@@ -25,23 +25,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Initialization
-%close all
-%clear
+close all
+clear
 clc
 
 % Trajectory generation
 knots = [0 15];
 waypoints = cell(1,2);
-waypoints{1} = [1 ; 1 ; 1];
-waypoints{2} = [4 ; 5 ; 1];
+waypoints{1} = [0 ; 0 ; 0];
+waypoints{2} = [0 ; 0 ; 0];
 
 %waypoints{1} = [1 ; 1 ; 1];
 %waypoints{2} = [5 ; 6 ; 1];
 
 % Fix this...
-box_size = 0.25;
-run("traj_corridors.m")
-save('corridors.mat','-struct','corridors_scaled') % <- note -struct option
+box_size = 0.05;
+%run("traj_corridors.m")
+%save('corridors.mat','-struct','corridors_scaled') % <- note -struct option
 %corridors_loaded = load('corridors.mat')
 order = 12;
 %corridors.times = [1 2 3 4 5];
@@ -52,7 +52,10 @@ order = 12;
 %corridors.z_lower = [0 0 0 0 0];
 %corridors.z_upper = [2 2 2 2 2];
 % ...until here
+tot_time = 15;
+
+corridors = pos_2_corridors(transpose(waypoints{1}), transpose(waypoints{2}), coord1, coord2, coord3, coord4, box_size, tot_time);
 make_plots = true;
 
-poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots, map, route);
+poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots);
 poly_traj.polyCoeffSet
