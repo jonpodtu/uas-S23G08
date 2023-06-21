@@ -1,4 +1,4 @@
-function corridors = pos_2_corridors(start_pos, end_pos, coord1, coord2, coord3, coord4, box_sizes, box_dist, end_time)
+function corridors = pos_2_corridors(start_pos, end_pos, coord1, coord2, coord3, coord4, box_sizes, box_dist, end_time, up_point)
     box_size_waypoints = box_sizes(1);
     box_size_center = box_sizes(2);
     box_size_ends = box_sizes(3);
@@ -17,6 +17,34 @@ function corridors = pos_2_corridors(start_pos, end_pos, coord1, coord2, coord3,
     corridors.z_upper = start_pos(3)+box_size_waypoints;
 
     coords = [coord1; coord2; coord3; coord4];
+
+    if up_point==true
+        % Some small height offset
+%         z_dist = 0.20;
+%         time = time+z_dist;
+%         point = [start_pos(1) start_pos(2) z_dist];    % Initialize corridors with start position
+%         corridors.times = [corridors.times time];
+%         corridors.x_lower = [corridors.x_lower point(1)-0.10];
+%         corridors.x_upper = [corridors.x_upper point(1)+0.10];
+%         corridors.y_lower = [corridors.y_lower point(2)-0.10];
+%         corridors.y_upper = [corridors.y_upper point(2)+0.10];
+%         corridors.z_lower = [corridors.z_lower point(3)-0.10];
+%         corridors.z_upper = [corridors.z_upper point(3)+0.10];
+%         last_cor = point;
+    
+        % Do again for hoop height
+        z_dist = coords(1,3);
+        time = time+z_dist;
+        point = [start_pos(1) start_pos(2) z_dist];    % Initialize corridors with start position
+        corridors.times = [corridors.times time];
+        corridors.x_lower = [corridors.x_lower point(1)-0.10];
+        corridors.x_upper = [corridors.x_upper point(1)+0.10];
+        corridors.y_lower = [corridors.y_lower point(2)-0.10];
+        corridors.y_upper = [corridors.y_upper point(2)+0.10];
+        corridors.z_lower = [corridors.z_lower point(3)-0.10];
+        corridors.z_upper = [corridors.z_upper point(3)+0.10];
+        last_cor = point;
+    end
 
     % Loop over 
     for i=1:4
